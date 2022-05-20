@@ -21,6 +21,39 @@ html {}
     padding: 20px;
 }
 
+.problema-cabeza{
+    display: grid;
+    grid-template-columns:80px 100px 150px auto;
+    grid-template-rows:60px 80px;
+    grid-template-areas:
+    "titulo titulo titulo titulo"
+    "nombre rol carrera fecha";
+}
+
+.problema__titulo{
+    grid-area:titulo;
+}
+
+.problema__usuario{
+    grid-area:nombre;
+}
+
+.problema__rol{
+    grid-area: rol;
+}
+
+.problema__carrera{
+    grid-area:carrera;
+}
+
+.problema__fecha{
+    grid-area:fecha;
+}
+
+.problema__usuario{
+    font-size: 0.8em;
+}
+
 .pagina__respuestas {
     grid-area: respuestas;
 }
@@ -28,8 +61,19 @@ html {}
 .respuestas__contenido {
     display: grid;
     grid-template-areas:
-        "usuario respuesta";
+        "usuario"
+        "respuesta";
+    background-color: #f2f1f1;
+    padding: 10px;
 }
+
+.respuestas__contenedor{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    row-gap: 20px;        
+}
+
 
 .pagina__respuestas {
     padding: 20px;
@@ -44,26 +88,49 @@ html {}
 .usuario__respuesta {
     display: grid;
     justify-items: center;
-    text-align: center;
 }
 
 .usuario-usuario {
     display: grid;
-    text-align: center;
-    align-items: end;
-    padding: 10px;
-}
-
-.usuario__nombre {
-    align-self: flex-start;
-
+    grid-template-columns: 80px 5vw 10vw;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "icono nombre nombre nombre"
+    "icono rol carrera fecha";
+    column-gap: 10px;
 }
 
 .usuario__icono {
-    height: auto;
-    max-width: 60px;
-    border-radius: 50%;
+    height: 80px;
+    max-width: 90px;
     width: 100%;
+    grid-area: icono;
+    align-self: center;
+    text-align: center;
+}
+
+.usuario__nombre {
+    grid-area:nombre;
+    align-self: end;
+    font-weight: 500;
+}
+
+.usuario__rol{
+    grid-area: rol;
+    font-size: 0.8em;
+    align-self: flex-start;
+}
+
+.usuario__carrera{
+    grid-area: carrera;
+    font-size: 0.8em;
+    
+}
+
+.usuario__fecha-respuesta{
+    grid-area:fecha;
+    font-size: 0.8em;
+
 }
 
 @media only screen and (max-width:600px) {
@@ -71,7 +138,7 @@ html {}
 
     .pagina {
         grid-template-columns: 1fr;
-        grid-template-rows: auto 300px;
+        grid-template-rows: auto auto;
         grid-template-areas:
             "problema" 
             "respuestas";
@@ -88,4 +155,14 @@ html {}
     .usuario__icono{
         text-align: center;
     }
+
+    .usuario-usuario {
+        display: grid;
+        grid-template-columns: auto;
+    }
+
+    .usuario__nombre {
+
+    }
+    
 }
